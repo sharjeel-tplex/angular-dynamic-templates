@@ -8,7 +8,7 @@ import {
   ViewContainerRef,
   ɵcompileComponent,
 } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { compileComponentFromMetadata } from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
@@ -49,10 +49,10 @@ export class App implements OnInit {
   ngOnInit(): void {
     //const template = `<h3>Hello World!</h3><div *ngFor="let item of items">{{ item }}</div>`;
     const template = `
-    <div>
+    <div style="padding:50px; border: solid 2px; margin: 50px;">
       <h3>{{ contact.fullname }}</h3>
-      <h4>Cell: {{ contact.phone }}</h4>
-      <h4>Email: {{ contact.email }}</h4>
+      <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
+      <h4 *ngIf="contact.email">Email: {{ contact.email }}</h4>
     </div>
     `;
     const component = getComponentFromTemplate(template);
@@ -77,7 +77,7 @@ function getComponentFromTemplate(template: string) {
   ɵcompileComponent(MyCustomComponent, {
     template,
     standalone: true,
-    imports: [NgFor],
+    imports: [NgFor, NgIf],
   });
 
   return MyCustomComponent;
