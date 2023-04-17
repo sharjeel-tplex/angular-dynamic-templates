@@ -1,1 +1,25 @@
 /* Add application styles & imports to this file! */
+label {
+  width: 100px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 200px;
+}
+
+select {
+  width: 208px;
+  height: 22px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card {
+  padding: 50px;
+  margin: 50px;
+  background-color: white;
+}

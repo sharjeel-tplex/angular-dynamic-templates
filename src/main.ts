@@ -83,7 +83,7 @@ export class App implements OnInit {
     switch (design) {
       case 'Default': {
         template = `
-        <div style="padding:50px; border: solid 2px; margin: 50px;background-color:white;">
+        <div class="card" style="border: solid 2px;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
@@ -94,7 +94,7 @@ export class App implements OnInit {
       }
       case 'Design1': {
         template = `
-        <div style="padding:50px; border: dotted 3px blue; margin: 50px;background-color:white;">
+        <div class="card" style="border: dotted 3px blue;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.email">Email: {{ contact.email }}</h4>
@@ -105,7 +105,7 @@ export class App implements OnInit {
       }
       case 'Design2': {
         template = `
-        <div style="padding:50px; border: dashed 2px red; text-align:right; margin: 50px;background-color:white;">
+        <div class="card" tyle="order: dashed 2px; text-align:right; ">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.email">Email: {{ contact.email }}</h4>
@@ -116,7 +116,7 @@ export class App implements OnInit {
       }
       case 'Design3': {
         template = `
-        <div style="padding:50px; border: solid 4px green; margin: 50px;background-color:white;">
+        <div class="card" style="border: solid 4px green;" >
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
