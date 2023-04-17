@@ -19,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <h1>Card Properties</h1>
+  <div style="width:400px; float:left; ">
+    <h1>Card Editor</h1>
 
     <form>
     
@@ -41,33 +42,30 @@ import { FormsModule } from '@angular/forms';
       <input type="text" id="phone" name="phone" [(ngModel)]="contact.phone"> <br />
 
   </form>
-
+</div>
+<div style="width:400px; ; float:left;background-color:lightgray;">
+  <h1>Design</h1>
   <ng-container #container></ng-container>
-
+</div>
 `,
 })
 export class App implements OnInit {
   cardDesign = 'Default';
   contact: Contact = new Contact();
-  myValues = ['value1', 'value2'];
 
-  onSubmit(form) {
-    this.contact.fullname = form.value['fullname'];
-    this.contact.email = form.value['email'];
-    this.contact.phone = form.value['phone'];
-  }
-
-  //viewRef = inject(ViewContainerRef);
   @ViewChild('container', { read: ViewContainerRef })
   container: ViewContainerRef;
 
   ngOnInit(): void {
-    this.onDropdownChange();
+    setTimeout((_) => {
+      this.onDropdownChange();
+    });
   }
 
   onDropdownChange() {
     // Destroy the current component
     this.container.clear();
+
     setTimeout((_) => {
       const template = this.getDesignTemplate(this.cardDesign);
       // Create the new component with the ComponentFactoryResolver
@@ -85,7 +83,7 @@ export class App implements OnInit {
     switch (design) {
       case 'Default': {
         template = `
-        <div style="padding:50px; border: solid 2px; margin: 50px;">
+        <div style="padding:50px; border: solid 2px; margin: 50px;background-color:white;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
@@ -96,7 +94,7 @@ export class App implements OnInit {
       }
       case 'Design1': {
         template = `
-        <div style="padding:50px; border: dotted 3px blue; margin: 50px;">
+        <div style="padding:50px; border: dotted 3px blue; margin: 50px;background-color:white;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.email">Email: {{ contact.email }}</h4>
@@ -107,18 +105,18 @@ export class App implements OnInit {
       }
       case 'Design2': {
         template = `
-        <div style="padding:50px; border: dashed 2px red; margin: 50px;">
+        <div style="padding:50px; border: dashed 2px red; text-align:right; margin: 50px;background-color:white;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
-          <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
           <h4 *ngIf="contact.email">Email: {{ contact.email }}</h4>
+          <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
         </div>
         `;
         break;
       }
       case 'Design3': {
         template = `
-        <div style="padding:50px; border: solid 4px green; margin: 50px;">
+        <div style="padding:50px; border: solid 4px green; margin: 50px;background-color:white;">
           <h2>${this.cardDesign}</h2>  
           <h3>{{ contact.fullname }}</h3>
           <h4 *ngIf="contact.phone">Cell: {{ contact.phone }}</h4>
@@ -138,23 +136,23 @@ bootstrapApplication(App);
 @Component({
   template: '',
 })
-class MyCustomComponent {
+class MyCarDesignTemplate {
   //@Input() items: string[] = [];
   @Input() contact: Contact = new Contact();
 }
 
 function getComponentFromTemplate(template: string) {
-  ɵcompileComponent(MyCustomComponent, {
+  ɵcompileComponent(MyCarDesignTemplate, {
     template,
     standalone: true,
     imports: [NgFor, NgIf],
   });
 
-  return MyCustomComponent;
+  return MyCarDesignTemplate;
 }
 
 export class Contact {
-  public fullname: string = '<full name>';
-  public phone: string = '<phone>';
-  public email: string = '<email>';
+  public fullname: string = 'Abdul Rehman';
+  public phone: string = '+92-25654654';
+  public email: string = 'ar@gmail.com';
 }
