@@ -136,19 +136,19 @@ bootstrapApplication(App);
 @Component({
   template: '',
 })
-class MyCarDesignTemplate {
+class MyCardDesignTemplate {
   //@Input() items: string[] = [];
   @Input() contact: Contact = new Contact();
 }
 
 function getComponentFromTemplate(template: string) {
-  ɵcompileComponent(MyCarDesignTemplate, {
+  ɵcompileComponent(MyCardDesignTemplate, {
     template,
     standalone: true,
     imports: [NgFor, NgIf],
   });
 
-  return MyCarDesignTemplate;
+  return MyCardDesignTemplate;
 }
 
 export class Contact {
