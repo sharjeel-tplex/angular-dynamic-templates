@@ -21,6 +21,15 @@ import { FormsModule } from '@angular/forms';
     <h1>Card Properties</h1>
 
     <form>
+    
+    <label for="template">Template: </label>
+    <select name="cardDesign" [(ngModel)]="cardDesign">>
+      <option value="Design1">Design 1</option>
+      <option value="Design2">Design 2</option>
+      <option value="Design3">Design 3</option>
+      <option value="Default">Defautl</option>
+    </select>
+    <br />
       <label for="fullname">Full Name: </label>
       <input type="text" id="fullname" name="fullname" [(ngModel)]="contact.fullname"> <br />
 
@@ -35,6 +44,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class App implements OnInit {
   name = 'Angular';
+  cardDesign = 'Default';
   contact: Contact = new Contact();
   myValues = ['value1', 'value2'];
 
